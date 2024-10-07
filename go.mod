@@ -11,7 +11,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/jinzhu/configor v1.2.2
 	github.com/stretchr/testify v1.9.0
-	golang.org/x/sync v0.8.0
+	go.uber.org/mock v0.4.0
 )
 
 require (
