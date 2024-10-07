@@ -1,10 +1,18 @@
 # Word of Wisdom
 A test task for Server Engineer
 
+### About
+
+The repository contains PoC of a server with DDOS protection. The protection is implemented using proof-of-work concept
+and in particular [Hashcash](https://ru.wikipedia.org/wiki/Hashcash) check. The algorithm is quite famous, and its
+difficulty can be easily adjusted with just one parameter, i.e. the number of leading zeroes.
+
+### Launch
+
 Simply run `docker-compose up` in the project's root directory. \
 This launches the Word of Wisdom server and a few clients.
 
-Sample output:
+### Sample output
 
 ```log
 word-of-wisdom-client-2  | 2024/10/07 00:24:59 [INFO] initialize config
