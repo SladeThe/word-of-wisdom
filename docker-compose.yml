@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  server:
+    build:
+      dockerfile: ./Dockerfile-Server
+    restart: always
+    ports:
+      - '9999:9999'
+    networks:
+      - wow
+
+  client:
+    build:
+      dockerfile: ./Dockerfile-Client
+    deploy:
+      replicas: 2
+    restart: always
+    networks:
+      - wow
+
+networks:
+  wow:
