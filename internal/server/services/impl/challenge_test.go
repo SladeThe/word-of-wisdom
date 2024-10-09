@@ -10,14 +10,21 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"go.uber.org/mock/gomock"
 
 	"github.com/SladeThe/word-of-wisdom/internal/common/entities"
+	"github.com/SladeThe/word-of-wisdom/internal/server/repositories"
+	mockRepositories "github.com/SladeThe/word-of-wisdom/internal/server/repositories/mock"
 	"github.com/SladeThe/word-of-wisdom/internal/server/services"
 )
 
 func TestChallenge_Accept(t *testing.T) {
+	ctrl := gomock.NewController(t)
+
 	ctx := context.Background()
 	cfg := ChallengeConfig{ZeroBitCount: 16}
+
+	ctx = repositories.Set(ctx, repositories.Repositories{Client: mockRepositories.NewMockClient(ctrl)})
 
 	service, errChallenge := NewChallenge(cfg)
 	require.NoError(t, errChallenge)
@@ -66,6 +73,15 @@ func TestChallenge_Accept(t *testing.T) {
 		},
 		want: want{
 			challenge: entities.Challenge{ZeroBitCount: cfg.ZeroBitCount},
+		},
+		expect: func(a args, w want) {
+			repositories.Must(a.ctx).Client.(*mockRepositories.MockClient).EXPECT().
+				OneByID(gomock.Any(), a.id).
+				Return(entities.Client{
+					ID:           a.id,
+					ZeroBitCount: cfg.ZeroBitCount,
+				}, nil).
+				Times(1)
 		},
 	}}
 
