@@ -14,13 +14,16 @@ var (
 )
 
 type Repositories struct {
+	Client       Client
 	WordOfWisdom WordOfWisdom
 }
 
 func New(
+	client Client,
 	wordOfWisdom WordOfWisdom,
 ) Repositories {
 	return Repositories{
+		Client:       client,
 		WordOfWisdom: wordOfWisdom,
 	}
 }

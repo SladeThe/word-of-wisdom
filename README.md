@@ -14,28 +14,50 @@ This launches the Word of Wisdom server and a few clients.
 ### Sample output
 
 ```log
-word-of-wisdom-client-2  | 2024/10/07 00:24:59 [INFO] initialize config
-word-of-wisdom-client-2  | 2024/10/07 00:24:59 [INFO] connect to server:9999
-word-of-wisdom-client-1  | 2024/10/07 00:24:59 [INFO] initialize config
-word-of-wisdom-client-1  | 2024/10/07 00:24:59 [INFO] connect to server:9999
-word-of-wisdom-server-1  | 2024/10/07 00:24:59 [INFO] initialize config
-word-of-wisdom-server-1  | 2024/10/07 00:24:59 [INFO] initialize repositories
-word-of-wisdom-server-1  | 2024/10/07 00:24:59 [INFO] initialize services
-word-of-wisdom-server-1  | 2024/10/07 00:24:59 [INFO] start server on :9999
-word-of-wisdom-server-1  | 2024/10/07 00:25:00 [INFO] challenge client: 2b1d273c-aca3-4b79-b44a-6221cf60c6af
-word-of-wisdom-server-1  | 2024/10/07 00:25:00 [INFO] challenge client: 3842e086-6e14-404b-a4d8-b60ca88368d8
-word-of-wisdom-server-1  | 2024/10/07 00:25:00 [INFO] check solution: 1:20:241007:3842e086-6e14-404b-a4d8-b60ca88368d8::z0KyfrLm:5ebab
-word-of-wisdom-server-1  | 2024/10/07 00:25:00 [INFO] send word to: 3842e086-6e14-404b-a4d8-b60ca88368d8
-word-of-wisdom-server-1  | 2024/10/07 00:25:00 [INFO] challenge client: 3842e086-6e14-404b-a4d8-b60ca88368d8
-word-of-wisdom-client-1  | 2024/10/07 00:25:00 [INFO] remember carefully: Каковы гости, таков и пир.
-word-of-wisdom-server-1  | 2024/10/07 00:25:01 [INFO] check solution: 1:20:241007:2b1d273c-aca3-4b79-b44a-6221cf60c6af::sX16BWH0:123bfe
-word-of-wisdom-server-1  | 2024/10/07 00:25:01 [INFO] send word to: 2b1d273c-aca3-4b79-b44a-6221cf60c6af
-word-of-wisdom-server-1  | 2024/10/07 00:25:01 [INFO] challenge client: 2b1d273c-aca3-4b79-b44a-6221cf60c6af
-word-of-wisdom-client-2  | 2024/10/07 00:25:01 [INFO] remember carefully: Ехал к Фоме, а заехал к куме.
-word-of-wisdom-server-1  | 2024/10/07 00:25:03 [INFO] check solution: 1:20:241007:2b1d273c-aca3-4b79-b44a-6221cf60c6af::ptvr1owv:29aa6c
-word-of-wisdom-client-2  | 2024/10/07 00:25:03 [INFO] remember carefully: На балалайку станет, и на кабак станет, а на свечку не станет.
-word-of-wisdom-server-1  | 2024/10/07 00:25:03 [INFO] send word to: 2b1d273c-aca3-4b79-b44a-6221cf60c6af
-word-of-wisdom-server-1  | 2024/10/07 00:25:03 [INFO] challenge client: 2b1d273c-aca3-4b79-b44a-6221cf60c6af
-word-of-wisdom-server-1  | 2024/10/07 00:25:04 [INFO] check solution: 1:20:241007:3842e086-6e14-404b-a4d8-b60ca88368d8::Mt4OnNO0:4a7b0a
-word-of-wisdom-client-1  | 2024/10/07 00:25:04 [INFO] remember carefully: У бабы семьдесят две увертки в день.
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:25 [INFO] initialize config
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:25 [INFO] connect to server:9999
+word-of-wisdom-client-hard-1  | 2024/10/09 14:46:25 [INFO] initialize config
+word-of-wisdom-client-hard-1  | 2024/10/09 14:46:25 [INFO] connect to server:9999
+word-of-wisdom-server-1       | 2024/10/09 14:46:25 [INFO] initialize config
+word-of-wisdom-server-1       | 2024/10/09 14:46:25 [INFO] initialize repositories
+word-of-wisdom-server-1       | 2024/10/09 14:46:25 [INFO] initialize services
+word-of-wisdom-server-1       | 2024/10/09 14:46:25 [INFO] start server on :9999
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:26 [INFO] got challenge of difficulty: 20
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] challenge client: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-client-hard-1  | 2024/10/09 14:46:26 [INFO] got challenge of difficulty: 24
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] challenge client: 2b1d273c-aca3-4b79-b44a-6221cf60c6af
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] check solution: 1:20:241009:c442bad7-02ec-4637-a25a-1e21b1651351::nNMWm6mS:4b958
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] send word to: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] challenge client: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:26 [INFO] remember carefully: На покляпое дерево и козы скачут.
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:26 [INFO] got challenge of difficulty: 20
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] check solution: 1:20:241009:c442bad7-02ec-4637-a25a-1e21b1651351::pKAbHcaH:4471b
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] send word to: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] challenge client: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:26 [INFO] remember carefully: Пишет, словно разводы разводит (крупно и медленно).
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:26 [INFO] got challenge of difficulty: 20
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:26 [INFO] remember carefully: Не черт тебя нес на худой на мост.
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:26 [INFO] got challenge of difficulty: 20
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] check solution: 1:20:241009:c442bad7-02ec-4637-a25a-1e21b1651351::GnKC0wOO:2d0
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] send word to: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-server-1       | 2024/10/09 14:46:26 [INFO] challenge client: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-server-1       | 2024/10/09 14:46:28 [INFO] check solution: 1:20:241009:c442bad7-02ec-4637-a25a-1e21b1651351::AYn1ohTO:1e553a
+word-of-wisdom-server-1       | 2024/10/09 14:46:28 [INFO] send word to: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-server-1       | 2024/10/09 14:46:28 [INFO] challenge client: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:28 [INFO] remember carefully: Никола в путь, Христос по дорожке (отплывающим на судах).
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:28 [INFO] got challenge of difficulty: 20
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:29 [INFO] remember carefully: Пошел черных кобелей набело перемывать.
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:29 [INFO] got challenge of difficulty: 20
+word-of-wisdom-server-1       | 2024/10/09 14:46:29 [INFO] check solution: 1:20:241009:c442bad7-02ec-4637-a25a-1e21b1651351::nvik8NBH:12fbc8
+word-of-wisdom-server-1       | 2024/10/09 14:46:29 [INFO] send word to: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-server-1       | 2024/10/09 14:46:29 [INFO] challenge client: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-server-1       | 2024/10/09 14:46:29 [INFO] check solution: 1:20:241009:c442bad7-02ec-4637-a25a-1e21b1651351::TE9gUTgy:26170
+word-of-wisdom-server-1       | 2024/10/09 14:46:29 [INFO] send word to: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:29 [INFO] remember carefully: Пришли казаки с Дону, да прогнали ляхов до (к) дому.
+word-of-wisdom-client-easy-1  | 2024/10/09 14:46:29 [INFO] got challenge of difficulty: 20
+word-of-wisdom-server-1       | 2024/10/09 14:46:29 [INFO] challenge client: c442bad7-02ec-4637-a25a-1e21b1651351
+word-of-wisdom-server-1       | 2024/10/09 14:46:29 [INFO] check solution: 1:24:241009:2b1d273c-aca3-4b79-b44a-6221cf60c6af::xD6a4Ni2:41acd9
+word-of-wisdom-server-1       | 2024/10/09 14:46:29 [INFO] send word to: 2b1d273c-aca3-4b79-b44a-6221cf60c6af
+word-of-wisdom-client-hard-1  | 2024/10/09 14:46:29 [INFO] remember carefully: И не хочет коза на базар, да ведут за рога.
+word-of-wisdom-client-hard-1  | 2024/10/09 14:46:29 [INFO] got challenge of difficulty: 24
 ```

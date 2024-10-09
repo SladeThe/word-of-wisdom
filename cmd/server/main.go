@@ -7,10 +7,15 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/google/uuid"
+	"go.uber.org/mock/gomock"
+
+	"github.com/SladeThe/word-of-wisdom/internal/common/entities"
 	"github.com/SladeThe/word-of-wisdom/internal/server"
 	"github.com/SladeThe/word-of-wisdom/internal/server/config"
 	"github.com/SladeThe/word-of-wisdom/internal/server/repositories"
 	embeddedRepositories "github.com/SladeThe/word-of-wisdom/internal/server/repositories/embedded"
+	mockRepositories "github.com/SladeThe/word-of-wisdom/internal/server/repositories/mock"
 	"github.com/SladeThe/word-of-wisdom/internal/server/services"
 	implServices "github.com/SladeThe/word-of-wisdom/internal/server/services/impl"
 )
@@ -57,7 +62,29 @@ func main() {
 }
 
 func initRepositories() (repositories.Repositories, error) {
-	return repositories.New(embeddedRepositories.NewWordOfWisdom()), nil
+	client := mockRepositories.NewMockClient(gomock.NewController(nil))
+
+	id := entities.ClientID(uuid.MustParse("2b1d273c-aca3-4b79-b44a-6221cf60c6af"))
+
+	client.EXPECT().
+		OneByID(gomock.Any(), gomock.Eq(id)).
+		Return(entities.Client{ID: id, ZeroBitCount: 24}, nil).
+		AnyTimes()
+
+	client.EXPECT().
+		OneByID(gomock.Any(), gomock.Not(id)).
+		DoAndReturn(func(ctx context.Context, id entities.ClientID) (entities.Client, error) {
+			return entities.Client{
+				ID:           id,
+				ZeroBitCount: 20,
+			}, nil
+		}).
+		AnyTimes()
+
+	return repositories.New(
+		client,
+		embeddedRepositories.NewWordOfWisdom(),
+	), nil
 }
 
 func initServices(cfg config.Services) (services.Services, error) {

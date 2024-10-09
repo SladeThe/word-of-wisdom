@@ -10,11 +10,25 @@ services:
     networks:
       - wow
 
-  client:
+  client-hard:
     build:
       dockerfile: ./Dockerfile-Client
     deploy:
-      replicas: 2
+      replicas: 1
+    environment:
+      - WOW_CLIENT_ID=2b1d273c-aca3-4b79-b44a-6221cf60c6af
+      - WOW_CLIENT_HOST=server
+    restart: always
+    networks:
+      - wow
+
+  client-easy:
+    build:
+      dockerfile: ./Dockerfile-Client
+    deploy:
+      replicas: 1
+    environment:
+      - WOW_CLIENT_HOST=server
     restart: always
     networks:
       - wow

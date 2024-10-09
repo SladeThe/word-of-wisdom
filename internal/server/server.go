@@ -10,9 +10,7 @@ import (
 	"github.com/SladeThe/checked-go/must"
 	"github.com/SladeThe/yav"
 	"github.com/SladeThe/yav/vnumber"
-	"github.com/google/uuid"
 
-	"github.com/SladeThe/word-of-wisdom/internal/common/entities"
 	"github.com/SladeThe/word-of-wisdom/internal/common/network"
 	"github.com/SladeThe/word-of-wisdom/internal/common/network/raw"
 	"github.com/SladeThe/word-of-wisdom/internal/server/services"
@@ -97,10 +95,10 @@ func (s *Server) process(conn net.Conn) {
 	}()
 
 	var server network.Server = raw.FromConnection(conn)
-	clientID := entities.ClientID(uuid.New())
 
-	if errWriteID := server.WriteClientID(clientID); errWriteID != nil {
-		log.Print("[ERROR] failed writing client ID: ", errWriteID)
+	clientID, errReadID := server.ReadClientID()
+	if errReadID != nil {
+		log.Print("[ERROR] failed reading client ID: ", errReadID)
 		return
 	}
 

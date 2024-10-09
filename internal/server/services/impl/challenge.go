@@ -12,6 +12,7 @@ import (
 	"github.com/catalinc/hashcash"
 
 	"github.com/SladeThe/word-of-wisdom/internal/common/entities"
+	"github.com/SladeThe/word-of-wisdom/internal/server/repositories"
 	"github.com/SladeThe/word-of-wisdom/internal/server/services"
 )
 
@@ -41,12 +42,17 @@ func NewChallenge(cfg ChallengeConfig) (Challenge, error) {
 	return Challenge{cfg: cfg}, nil
 }
 
-func (s Challenge) Accept(_ context.Context, id entities.ClientID) (entities.Challenge, error) {
+func (s Challenge) Accept(ctx context.Context, id entities.ClientID) (entities.Challenge, error) {
 	if errValidate := yav.Nested("id", id.Validate()); errValidate != nil {
 		return entities.Challenge{}, errors.Join(services.ErrInvalidArguments, errValidate)
 	}
 
-	return entities.Challenge{ZeroBitCount: s.cfg.ZeroBitCount}, nil
+	client, errClient := repositories.Must(ctx).Client.OneByID(ctx, id)
+	if errClient != nil {
+		return entities.Challenge{}, handleError(errClient, "failed getting client by ID")
+	}
+
+	return entities.Challenge{ZeroBitCount: client.ZeroBitCount}, nil
 }
 
 func (s Challenge) Solve(

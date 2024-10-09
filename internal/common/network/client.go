@@ -5,7 +5,7 @@ import (
 )
 
 type Client interface {
-	ReadClientID() (entities.ClientID, error)
+	WriteClientID(id entities.ClientID) error
 	ReadChallenge() (entities.Challenge, error)
 	WriteSolution(solution entities.Solution) error
 	ReadWordOfWisdom() (entities.WordOfWisdom, error)
